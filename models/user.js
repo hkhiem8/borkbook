@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  dogs: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Dogs",
+  }],
 });
 
 const User = mongoose.model("User", userSchema);

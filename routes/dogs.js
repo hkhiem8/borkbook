@@ -12,9 +12,9 @@ router.delete('/:id', dogCtrl.destroy)
 router.put('/:id', dogCtrl.update)
 // Create
 router.post('/', dogCtrl.create)
-// Edit
-router.get('/:id/edit', dogCtrl.edit)
 // Show
 router.get('/:id', dogCtrl.show)
+// Edit
+router.get('/:id/edit', dogCtrl.edit)
 
 module.exports = router

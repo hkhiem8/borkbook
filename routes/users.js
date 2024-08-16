@@ -2,23 +2,19 @@ const express = require('express')
 const router = express.Router()
 const userCtrl = require('../controllers/users')
 
-// Index
-router.get('/', userCtrl.index)
-// New
-router.get('/new', userCtrl.newFunc)
-// SignIn
+//Render Sign-in page
 router.get('/sign-in', userCtrl.showSignIn)
-// Delete
+// Delete Functionality
 router.delete('/:id', userCtrl.destroy)
-// Update
+// Update Functionality
 router.put('/:id', userCtrl.update)
-// Create
+// Sign Up Functionality
 router.post('/', userCtrl.signUp)
 // Sign In Functionality
-router.post('/sign-in-user', userCtrl.signIn)
-// Edit
-router.get('/:id/edit', userCtrl.edit)
-// Show
+router.post('/sign-in', userCtrl.signIn)
+// Renders Show Page
 router.get('/:id', userCtrl.show)
+// Render Edit form
+router.get('/:id/edit', userCtrl.edit)
 
 module.exports = router

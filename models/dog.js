@@ -27,6 +27,10 @@ const dogSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    events: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Events",
+    }]
   },
   { timestamps: true }
 );
