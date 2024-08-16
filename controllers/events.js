@@ -4,10 +4,13 @@ const Dog = require("../models/dog");
 // Renders new event form
 const newFunc = async (req, res) => {
   try {
-    const dogs = await Dog.find({ owner: req.session.user._id });
-    if (!dogs.length)
+    const dog = await Dog.findOne({
+      _id: req.params.dogId,
+      owner: req.session.user._id,
+    });
+    if (!dog)
       throw new Error("You must have at least one dog to create an event.");
-    res.render("events/new.ejs", { dogs });
+    res.render("events/new.ejs", { dog });
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -16,14 +19,20 @@ const newFunc = async (req, res) => {
 // Create
 const create = async (req, res) => {
   try {
+    if (!req.session.user || !req.session.user._id) {
+      throw new Error("User is not authenticated");
+    }
     const dog = await Dog.findOne({
-      _id: req.body.dog,
+      _id: req.params.dogId,
       owner: req.session.user._id,
     });
     if (!dog) throw new Error("Dog not found");
-    req.body.dog = dog._id;
-    const newEvent = await Event.create(req.body);
-    res.redirect(`/events/${newEvent._id}`);
+    const newEvent = await Event.create({
+      name: req.body.name,
+      notes: req.body.notes,
+      dog: dog._id,
+    });
+    res.redirect(`/dogs/${dog._id}/events/${newEvent._id}`);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -35,7 +44,7 @@ const index = async (req, res) => {
     const { dogId } = req.params;
     const dog = await Dog.findOne({ _id: dogId, owner: req.session.user._id });
     const events = await Event.find({ dog: dogId }).populate("dog");
-    res.render("events/index.ejs", { events });
+    res.render("events/index.ejs", { dog, events });
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -70,16 +79,19 @@ const edit = async (req, res) => {
 //Update
 const update = async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id).populate("dog");
-    if (!event) throw new Error("Event not found");
-    if (event.dog.owner.toString() !== req.session.user._id)
-      throw new Error("Unauthorized access.");
-    const updatedEvent = await Event.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.redirect(`/events/${updatedEvent._id}`);
+    const dog = await Dog.findOne({
+        _id: req.params.dogId,
+        owner: req.session.user._id,
+      });
+      const updatedEvent = await Event.findByIdAndUpdate(
+          req.params.id, 
+          {name: req.body.name,
+          notes: req.body.notes,
+          dog: dog._id,},
+          );
+
+    if (!updatedEvent) throw new Error("Event not found");
+    res.redirect(`/dogs/${dog._id}/events/${updatedEvent._id}`);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }

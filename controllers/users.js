@@ -52,8 +52,8 @@ const destroy = async (req, res) => {
     const dogs = await Dog.find({ owner: deletedUser.id });
 
     for (let dog of dogs) {
-        await Event.deleteMany({dog: dog.id });
-        await dog.deleteOne();
+      await Event.deleteMany({ dog: dog.id });
+      await dog.deleteOne();
     }
     res.redirect("/users");
   } catch (error) {
@@ -90,17 +90,21 @@ const edit = async (req, res) => {
 
 // Shows user profile with dog and events
 const show = async (req, res) => {
-    try {
-      const foundUser = await User.findOne({ _id: req.params.id }).populate("dogs");
-      const foundEvents = await Event.find({ dog: { $in: foundUser.dogs.map(dog => dog._id)}})
-      res.render("users/show.ejs", {
-        user: foundUser,
-        events: foundEvents
-      });
-    } catch (error) {
-      res.status(400).json({ msg: error.message });
-    }
-  };
+  try {
+    const foundUser = await User.findOne({ _id: req.params.id }).populate(
+      "dogs"
+    );
+    const foundEvents = await Event.find({
+      dog: { $in: foundUser.dogs.map((dog) => dog._id) },
+    });
+    res.render("users/show.ejs", {
+      user: foundUser,
+      events: foundEvents,
+    });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+};
 
 module.exports = {
   destroy,

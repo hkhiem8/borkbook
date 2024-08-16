@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= dog.name %> Details</title>
+</head>
+<body>
+    <h1><%= dog.name %></h1>
+    <ul>
+        <li>Breed: <%= dog.breed %></li>
+        <li>Age: <%= dog.age %></li>
+        <li>Weight: <%= dog.weight %></li>
+        <li>Notes: <%= dog.notes %></li>
+    </ul>
+
+    <h2>Events for <%= dog.name %>:</h2>
+    <ul>
+        <% events.forEach(event => { %>
+            <li>
+                <a href="/dogs/<%= dog._id %>/events/<%= event._id %>"><%= event.name %></a>
+            </li>
+        <% }) %>
+    </ul>
+
+    <a href="/dogs/<%= dog._id %>/events/new">Add New Event</a>
+    <a href="/dogs">Back to Dogs</a>
+</body>
+</html>

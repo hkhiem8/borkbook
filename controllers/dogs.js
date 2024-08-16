@@ -1,5 +1,6 @@
 const Dog = require('../models/dog');
 const User = require('../models/user');
+const Event = require("../models/event");
 
 //Displays All Dogs
 const index = async (req, res) => {

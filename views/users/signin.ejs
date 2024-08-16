@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login or Register</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <form action="/users/sign-in" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <h1>Register</h1>
+
+    <form action="/users" method="POST">
+        <label for="new-username">Username:</label>
+        <input type="text" id="new-username" name="username" required><br><br>
+
+        <label for="new-password">Password:</label>
+        <input type="password" id="new-password" name="password" required><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

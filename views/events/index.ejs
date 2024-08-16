@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events for <%= dog.name %></title>
+</head>
+<body>
+    <h1>Events for <%= dog.name %></h1>
+
+    <ul>
+        <% events.forEach(event => { %>
+            <li>
+                <a href="/dogs/<%= dog._id %>/events/<%= event._id %>"><%= event.name %></a>
+            </li>
+        <% }) %>
+    </ul>
+
+    <a href="/dogs/<%= dog._id %>/events/new">Add New Event</a>
+    <a href="/dogs/<%= dog._id %>">Back to <%= dog.name %></a>
+</body>
+</html>
