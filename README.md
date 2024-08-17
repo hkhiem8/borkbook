@@ -20,7 +20,7 @@ Deployment coming soon...
 - Node.js
 - Express.js
 - MongoDB
-- Emedded Javascript (EJS)
+- Embedded Javascript (EJS)
 - CSS
 - Middlewares: method-override, express-session, bcrypt, Morgan
 
