@@ -1,24 +1,14 @@
-const express = require('express')
-const router = express.Router()
-const userCtrl = require('../controllers/users')
-const isSignedIn = require('../middleware/is-signed-in');
+const express = require("express");
+const router = express.Router();
+const userCtrl = require("../controllers/users");
 
 //Render Sign-in page
-router.get('/sign-in', userCtrl.showSignIn)
+router.get("/sign-in", userCtrl.showSignIn);
 // Sign In Functionality
-router.post('/sign-in', userCtrl.signIn)
+router.post("/sign-in", userCtrl.signIn);
+//Render Sign-up page
+router.get("/", userCtrl.showSignUp);
 // Sign Up Functionality
-router.post('/', userCtrl.signUp)
+router.post("/", userCtrl.signUp);
 
-router.use(isSignedIn);
-
-// Delete Functionality
-router.delete('/:id', userCtrl.destroy)
-// Update Functionality
-router.put('/:id', userCtrl.update)
-// Renders Show Page
-router.get('/:id', userCtrl.show)
-// Render Edit form
-router.get('/:id/edit', userCtrl.edit)
-
-module.exports = router
+module.exports = router;

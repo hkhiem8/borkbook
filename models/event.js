@@ -8,7 +8,6 @@ const eventSchema = new mongoose.Schema(
     },
     notes: {
       type: String,
-      required: false,
     },
     dog: {
       type: mongoose.Schema.Types.ObjectId,

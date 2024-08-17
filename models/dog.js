@@ -12,25 +12,24 @@ const dogSchema = new mongoose.Schema(
     },
     age: {
       type: Number,
-      required: false,
     },
     weight: {
       type: Number,
-      required: false,
     },
     notes: {
       type: String,
-      required: false,
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    events: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Events",
-    }]
+    events: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Events",
+      },
+    ],
   },
   { timestamps: true }
 );

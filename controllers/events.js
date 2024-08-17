@@ -19,9 +19,6 @@ const newFunc = async (req, res) => {
 // Create
 const create = async (req, res) => {
   try {
-    if (!req.session.user || !req.session.user._id) {
-      throw new Error("User is not authenticated");
-    }
     const dog = await Dog.findOne({
       _id: req.params.dogId,
       owner: req.session.user._id,
@@ -43,7 +40,7 @@ const index = async (req, res) => {
   try {
     const { dogId } = req.params;
     const dog = await Dog.findOne({ _id: dogId, owner: req.session.user._id });
-    const events = await Event.find({ dog: dogId }).populate("dog");
+    const events = await Event.find({ dog: dogId });
     res.render("events/index.ejs", { dog, events });
   } catch (error) {
     res.status(400).json({ msg: error.message });
@@ -79,19 +76,18 @@ const edit = async (req, res) => {
 //Update
 const update = async (req, res) => {
   try {
-    const dog = await Dog.findOne({
-        _id: req.params.dogId,
-        owner: req.session.user._id,
-      });
-      const updatedEvent = await Event.findByIdAndUpdate(
-          req.params.id, 
-          {name: req.body.name,
-          notes: req.body.notes,
-          dog: dog._id,},
-          );
+    const updatedEvent = await Event.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        notes: req.body.notes,
+        dog: req.params.dogId,
+      },
+      { new: true }
+    );
 
     if (!updatedEvent) throw new Error("Event not found");
-    res.redirect(`/dogs/${dog._id}/events/${updatedEvent._id}`);
+    res.redirect(`/dogs/${req.params.dogId}/events/${updatedEvent._id}`);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -102,7 +98,7 @@ const destroy = async (req, res) => {
   try {
     const deletedEvent = await Event.findByIdAndDelete(req.params.id);
     if (!deletedEvent) throw new Error("Event not found");
-    res.redirect("/events");
+    res.redirect(`/dogs/${req.params.dogId}/events`);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
