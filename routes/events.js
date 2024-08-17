@@ -7,13 +7,13 @@ router.use(isSignedIn);
 
 // Index
 router.get("/dogs/:dogId/events", eventCtrl.index);
-// Render the form for creating a new event for a specific dog
+// New - Renders the form for creating a new event
 router.get("/dogs/:dogId/events/new", eventCtrl.newFunc);
 // Create
 router.post("/dogs/:dogId/events", eventCtrl.create);
 // Show
 router.get("/dogs/:dogId/events/:id", eventCtrl.show);
-// Edit
+// Edit - Renders the form for editing an existing event
 router.get("/dogs/:dogId/events/:id/edit", eventCtrl.edit);
 // Update
 router.put("/dogs/:dogId/events/:id", eventCtrl.update);

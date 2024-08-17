@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <title><%= dog.name %> Details</title>
-</head>
-<body>
-    <h1><%= dog.name %></h1>
-    <ul>
+  </head>
+
+  <body>
+    <div>
+      <h1><%= dog.name %></h1>
+      <ul>
         <li>Breed: <%= dog.breed %></li>
         <li>Age: <%= dog.age %></li>
         <li>Weight: <%= dog.weight %></li>
         <li>Notes: <%= dog.notes %></li>
-    </ul>
+      </ul>
 
-    <h2>Events for <%= dog.name %>:</h2>
-    <ul>
-        <% events.forEach(event => { %>
-            <li>
-                <a href="/dogs/<%= dog._id %>/events/<%= event._id %>"><%= event.name %></a>
-            </li>
+      <h2>Events for <%= dog.name %>:</h2>
+      <ul>
+        <% events.forEach(event=> { %>
+        <li>
+          <a href="/dogs/<%= dog._id %>/events/<%= event._id %>">
+            <%= event.name %>
+          </a>
+        </li>
         <% }) %>
-    </ul>
-    <form action="/dogs/<%= dog._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    <a href="/dogs/<%= dog._id %>/edit">Edit</a>
-    <a href="/dogs/<%= dog._id %>/events/new">Add New Event</a>
-    <a href="/dogs">Back to Dogs</a>
-</body>
+      </ul>
+      <form action="/dogs/<%= dog._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= dog.name %></button>
+      </form>
+      <a href="/dogs/<%= dog._id %>/edit">Edit <%= dog.name %></a>
+      <a href="/dogs/<%= dog._id %>/events/new">Add New Event</a>
+      <a href="/dogs">Back to Dogs</a>
+    </div>
+  </body>
 </html>

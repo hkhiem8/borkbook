@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <title><%= event.name %> Details</title>
-  </head>
-  <body>
-    <h1><%= event.name %></h1>
-    <p><strong>Notes:</strong> <%= event.notes %></p>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>
+        <%= event.name %> Details
+    </title>
+</head>
 
-    <a href="/dogs/<%= event.dog._id %>/events/<%= event._id %>/edit"
-      >Edit Event</a
-    >
-    <form
-      action="/dogs/<%= event.dog._id %>/events/<%= event._id %>?_method=DELETE"
-      method="POST"
-    >
-      <button type="submit">Delete Event</button>
-    </form>
+<body>
+    <div>
+        <h1>
+            <%= event.name %>
+        </h1>
+        <p><strong>Notes:</strong>
+            <%= event.notes %>
+        </p>
 
-    <a href="/dogs/<%= event.dog._id %>/events">Back to Events</a>
-  </body>
+        <a href="/dogs/<%= event.dog._id %>/events/<%= event._id %>/edit">Edit Event</a>
+        <form action="/dogs/<%= event.dog._id %>/events/<%= event._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete Event</button>
+        </form>
+
+        <a href="/dogs/<%= event.dog._id %>/events">Back to Events</a>
+</body>
+</div>
+
 </html>

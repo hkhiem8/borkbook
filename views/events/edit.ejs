@@ -2,31 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <title>Edit Event</title>
   </head>
+
   <body>
-    <h1>Edit Event</h1>
+    <div>
+      <h1>Edit Event</h1>
 
-    <form
-      action="/dogs/<%= event.dog._id %>/events/<%= event._id %>?_method=PUT"
-      method="POST"
-    >
-      <label for="name">Event Name:</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value="<%= event.name %>"
-        required
-      /><br /><br />
+      <form
+        action="/dogs/<%= event.dog._id %>/events/<%= event._id %>?_method=PUT"
+        method="POST"
+      >
+        <label for="name">Event Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="<%= event.name %>"
+          required
+        /><br /><br />
 
-      <label for="notes">Notes:</label>
-      <textarea id="notes" name="notes"><%= event.notes %></textarea
-      ><br /><br />
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes"><%= event.notes %></textarea
+        ><br /><br />
 
-      <button type="submit">Save Changes</button>
-    </form>
+        <button type="submit" class="btn-save">Save Changes</button>
+      </form>
 
-    <a href="/dogs/<%= event.dog._id %>/events">Cancel</a>
+      <a href="/dogs/<%= event.dog._id %>/events">Cancel</a>
+    </div>
   </body>
 </html>

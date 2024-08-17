@@ -2,30 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <title>Register</title>
   </head>
   <body>
-    <h1>Register</h1>
+    <div>
+      <h1>Register</h1>
 
-    <form action="/users" method="POST">
-      <label for="new-username">Username:</label>
-      <input
-        type="text"
-        id="new-username"
-        name="username"
-        required
-      /><br /><br />
+      <form action="/users" method="POST">
+        <label for="new-username">Username:</label>
+        <input
+          type="text"
+          id="new-username"
+          name="username"
+          required
+        /><br /><br />
 
-      <label for="new-password">Password:</label>
-      <input
-        type="password"
-        id="new-password"
-        name="password"
-        required
-      /><br /><br />
+        <label for="new-password">Password:</label>
+        <input
+          type="password"
+          id="new-password"
+          name="password"
+          required
+        /><br /><br />
 
-      <button type="submit">Register</button>
-    </form>
-    <a href="/users/sign-in">Login</a>
+        <button type="submit">Register</button>
+      </form>
+      <a href="/users/sign-in">Login</a>
+    </div>
   </body>
 </html>

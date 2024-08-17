@@ -2,21 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <title>Add a New Event for <%= dog.name %></title>
   </head>
   <body>
-    <h1>Add a New Event for <%= dog.name %></h1>
-    <input type="hidden" name="dog" value="<%= dog._id %>" />
-    <form action="/dogs/<%= dog._id %>/events" method="POST">
-      <label for="name">Event Name:</label>
-      <input type="text" id="name" name="name" required /><br /><br />
+    <div>
+      <h1>Add a New Event for <%= dog.name %></h1>
+      <input type="hidden" name="dog" value="<%= dog._id %>" />
+      <form action="/dogs/<%= dog._id %>/events" method="POST">
+        <label for="name">Event Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
 
-      <label for="notes">Notes:</label>
-      <textarea id="notes" name="notes"></textarea><br /><br />
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes"></textarea><br /><br />
 
-      <button type="submit">Add Event</button>
-    </form>
+        <button type="submit">Add Event</button>
+      </form>
 
-    <a href="/dogs/<%= dog._id %>/events">Cancel</a>
+      <a href="/dogs/<%= dog._id %>/events">Cancel</a>
+    </div>
   </body>
 </html>

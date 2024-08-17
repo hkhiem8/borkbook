@@ -2,22 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <title>Events for <%= dog.name %></title>
   </head>
   <body>
-    <h1>Events for <%= dog.name %></h1>
+    <div>
+      <h1>Events for <%= dog.name %></h1>
 
-    <ul>
-      <% events.forEach(event => { %>
-      <li>
-        <a href="/dogs/<%= dog._id %>/events/<%= event._id %>"
-          ><%= event.name %></a
-        >
-      </li>
-      <% }) %>
-    </ul>
+      <ul>
+        <% events.forEach(event => { %>
+        <li>
+          <a href="/dogs/<%= dog._id %>/events/<%= event._id %>"
+            ><%= event.name %></a
+          >
+        </li>
+        <% }) %>
+      </ul>
 
-    <a href="/dogs/<%= dog._id %>/events/new">Add New Event</a>
-    <a href="/dogs/<%= dog._id %>">Back to <%= dog.name %></a>
+      <a href="/dogs/<%= dog._id %>/events/new">Add New Event</a>
+      <a href="/dogs/<%= dog._id %>">Back to <%= dog.name %></a>
+    </div>
   </body>
 </html>

@@ -2,22 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <title>My Dogs</title>
   </head>
+
   <body>
-    <h1>My Dogs</h1>
+    <div>
+      <h1>My Dogs</h1>
 
-    <ul>
-      <% dogs.forEach(dog => { %>
-      <li>
-        <a href="/dogs/<%= dog._id %>"><%= dog.name %></a>
-        <form action="/dogs/<%= dog._id %>?_method=DELETE" method="POST">
-          <button type="submit">Delete</button>
-        </form>
-      </li>
-      <% }) %>
-    </ul>
+      <ul>
+        <% dogs.forEach(dog=> { %>
+        <li>
+          <a href="/dogs/<%= dog._id %>"> <%= dog.name %> </a>
+          <form action="/dogs/<%= dog._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
 
-    <a href="/dogs/new">Add New Dog</a>
+      <a href="/dogs/new">Add New Dog</a>
+    </div>
   </body>
 </html>

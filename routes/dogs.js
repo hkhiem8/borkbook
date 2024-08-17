@@ -7,7 +7,7 @@ router.use(isSignedIn);
 
 // Index
 router.get("/", dogCtrl.index);
-// New
+// New - Renders the form to create a new dog
 router.get("/new", dogCtrl.newFunc);
 // Delete
 router.delete("/:id", dogCtrl.destroy);
@@ -17,7 +17,7 @@ router.put("/:id", dogCtrl.update);
 router.post("/", dogCtrl.create);
 // Show
 router.get("/:id", dogCtrl.show);
-// Edit
+// Edit - Renders the form to update an existing dog
 router.get("/:id/edit", dogCtrl.edit);
 
 module.exports = router;

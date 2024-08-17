@@ -2,52 +2,57 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
     <title>Edit Dog</title>
   </head>
+
   <body>
-    <h1>Edit <%= dog.name %></h1>
+    <div>
+      <h1>Edit <%= dog.name %></h1>
 
-    <form action="/dogs/<%= dog._id %>?_method=PUT" method="POST">
-      <label for="name">Name:</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value="<%= dog.name %>"
-        required
-      /><br /><br />
+      <form action="/dogs/<%= dog._id %>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="<%= dog.name %>"
+          required
+        /><br /><br />
 
-      <label for="breed">Breed:</label>
-      <input
-        type="text"
-        id="breed"
-        name="breed"
-        value="<%= dog.breed %>"
-        required
-      /><br /><br />
+        <label for="breed">Breed:</label>
+        <input
+          type="text"
+          id="breed"
+          name="breed"
+          value="<%= dog.breed %>"
+          required
+        /><br /><br />
 
-      <label for="age">Age:</label>
-      <input
-        type="number"
-        id="age"
-        name="age"
-        value="<%= dog.age %>"
-      /><br /><br />
+        <label for="age">Age:</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          value="<%= dog.age %>"
+        /><br /><br />
 
-      <label for="weight">Weight:</label>
-      <input
-        type="number"
-        id="weight"
-        name="weight"
-        value="<%= dog.weight %>"
-      /><br /><br />
+        <label for="weight">Weight:</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          value="<%= dog.weight %>"
+        /><br /><br />
 
-      <label for="notes">Notes:</label>
-      <textarea id="notes" name="notes"><%= dog.notes %></textarea><br /><br />
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes"><%= dog.notes %></textarea
+        ><br /><br />
 
-      <button type="submit">Save Changes</button>
-    </form>
-
-    <a href="/dogs">Cancel</a>
+        <button type="submit">Save Changes</button>
+      </form>
+      <a href="/dogs">Cancel</a>
+    </div>
   </body>
 </html>
